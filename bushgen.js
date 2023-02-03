@@ -8,13 +8,13 @@ function getRandom(min, max) {
 }
 
 function getRandomBush() {
-    var x = Math.floor(getRandom((-1*map)/2, map/2));
-    var y = Math.floor(getRandom((-1*map)/2, map/2));
+    var x = Math.floor(getRandom((-1 * map) / 2, map / 2));
+    var y = Math.floor(getRandom((-1 * map) / 2, map / 2));
     var scale = getRandom(0.5, 5);
-    return { x: x, y: y, scale };
+    return {x: x, y: y, scale};
 }
 
-for(var i = 0; i < bushCount; i++) {
+for (var i = 0; i < bushCount; i++) {
     locations.push(getRandomBush());
 }
 

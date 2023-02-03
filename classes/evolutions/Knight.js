@@ -1,4 +1,5 @@
 const Evolution = require("./Evolution");
+
 class Knight extends Evolution {
     constructor() {
         super();
@@ -7,6 +8,7 @@ class Knight extends Evolution {
         this.abilityCooldown = 60000;
         this.subEvolutions = [];
     }
+
     default() {
         return {
             speed: 1.1,
@@ -16,6 +18,7 @@ class Knight extends Evolution {
             damageCooldown: 1,
         };
     }
+
     ability() {
         return {
             speed: 2,
@@ -26,4 +29,5 @@ class Knight extends Evolution {
         };
     }
 }
+
 module.exports = Knight;

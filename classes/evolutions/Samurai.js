@@ -1,4 +1,5 @@
 const Evolution = require("./Evolution");
+
 class Samurai extends Evolution {
     constructor() {
         super();
@@ -7,6 +8,7 @@ class Samurai extends Evolution {
         this.abilityCooldown = 80000;
         this.subEvolutions = [];
     }
+
     default() {
         return {
             maxHealth: 1.3,
@@ -20,6 +22,7 @@ class Samurai extends Evolution {
             healAmount: 1.5,
         };
     }
+
     ability() {
         return {
             healWait: 0,
@@ -33,4 +36,5 @@ class Samurai extends Evolution {
         };
     }
 }
+
 module.exports = Samurai;

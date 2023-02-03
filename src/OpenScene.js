@@ -1,13 +1,14 @@
 import Phaser from "phaser";
+
 function msToTime(duration) {
     var milliseconds = parseInt((duration % 1000) / 100),
-      seconds = Math.floor((duration / 1000) % 60),
-      minutes = Math.floor((duration / (1000 * 60)) % 60),
-      hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
-  
-  
-    return (hours == "00"?"": hours+"h ") + (minutes == "00"?"": minutes+"m ") + seconds+"s";
-  }
+        seconds = Math.floor((duration / 1000) % 60),
+        minutes = Math.floor((duration / (1000 * 60)) % 60),
+        hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+
+    return (hours == "00" ? "" : hours + "h ") + (minutes == "00" ? "" : minutes + "m ") + seconds + "s";
+}
 
 
 class OpenScene extends Phaser.Scene {
@@ -15,44 +16,45 @@ class OpenScene extends Phaser.Scene {
         super();
         this.callback = callback;
     }
+
     setLoad(load) {
     }
+
     preload() {
-      try {
-        if(this.mobile) {
-          document.getElementsByClassName("grecaptcha-badge")[0].style.transform = "scale(0)";
-          document.getElementsByClassName("grecaptcha-badge")[0].style.transformOrigin = "0 0";
+        try {
+            if (this.mobile) {
+                document.getElementsByClassName("grecaptcha-badge")[0].style.transform = "scale(0)";
+                document.getElementsByClassName("grecaptcha-badge")[0].style.transformOrigin = "0 0";
+            }
+        } catch (e) {
+            console.log("captcha hide fail", e);
         }
-      }
-      catch(e) {
-        console.log("captcha hide fail", e);
-      }
-      console.time("load");
+        console.time("load");
         this.e = true;
         this.background = this.add.rectangle(0, 0, document.documentElement.clientWidth, document.documentElement.clientHeight, 0x008800).setOrigin(0).setScrollFactor(0, 0).setScale(2);
-   this.loadText =  this.add.text(0,0,"Loading").setOrigin(0.5,0.5);
-   this.progressText = this.add.text(0,0,"please wait.").setOrigin(0.5,0.5);
-      
-      this.loadText.setFontSize(this.canvas.width/20);
-      this.progressText.setFontSize(this.canvas.width/40);
-      this.loadText.x = this.canvas.width/2;
-      this.loadText.y = this.canvas.height/2;
-      this.progressText.x = this.canvas.width/2;
-      this.progressText.y = this.canvas.height/2 + this.canvas.height/10;
-      this.load.on("fileprogress", function(file, progress){
-        // var key = file.key;
-        var loader = this.load;
-var total = loader.totalToLoad;
-var remainder = loader.list.size + loader.inflight.size;
-var progress = 1 - (remainder / total);
-        this.progressText.setText((progress*100).toFixed(1)+"%");
-    }, this);
-        this.load.plugin("rexvirtualjoystickplugin",    "/joystick.js", true);
+        this.loadText = this.add.text(0, 0, "Loading").setOrigin(0.5, 0.5);
+        this.progressText = this.add.text(0, 0, "please wait.").setOrigin(0.5, 0.5);
+
+        this.loadText.setFontSize(this.canvas.width / 20);
+        this.progressText.setFontSize(this.canvas.width / 40);
+        this.loadText.x = this.canvas.width / 2;
+        this.loadText.y = this.canvas.height / 2;
+        this.progressText.x = this.canvas.width / 2;
+        this.progressText.y = this.canvas.height / 2 + this.canvas.height / 10;
+        this.load.on("fileprogress", function (file, progress) {
+            // var key = file.key;
+            var loader = this.load;
+            var total = loader.totalToLoad;
+            var remainder = loader.list.size + loader.inflight.size;
+            var progress = 1 - (remainder / total);
+            this.progressText.setText((progress * 100).toFixed(1) + "%");
+        }, this);
+        this.load.plugin("rexvirtualjoystickplugin", "/joystick.js", true);
         this.load.plugin("rexbbcodetextplugin", "/textplus.js", true);
 
         this.load.image("playerPlayer", "/assets/images/player.png");
         this.load.image("playerSword", "/assets/images/sword.png");
-  
+
         // samurai evolution
         this.load.image("samuraiPlayer", "/assets/images/samuraiSkin.png");
         // warrior evolution
@@ -78,7 +80,6 @@ var progress = 1 - (remainder / total);
         this.load.image("rookPlayer", "/assets/images/rookSkin.png");
 
 
-
         this.load.image("background", "/assets/images/background.jpeg");
         this.load.image("coin", "/assets/images/coin.png");
 
@@ -93,7 +94,7 @@ var progress = 1 - (remainder / total);
         this.load.image("hitParticle", "/assets/images/hitparticle.png");
         this.load.image("starParticle", "/assets/images/star.png");
         this.load.image("bush", "/assets/images/bush.png");
-        
+
         this.load.image("chatbtn", "/assets/images/chat.png");
         this.load.image("throwbtn", "/assets/images/throw.png");
         this.load.image("loginbtn", "/assets/images/login.png");
@@ -127,16 +128,17 @@ var progress = 1 - (remainder / total);
 
         this.scale.fullscreenTarget = document.getElementById("game");
         console.timeEnd("load");
-  
+
     }
 
     create() {
-    
-             this.scene.stop();
-             this.scene.start("title");
+
+        this.scene.stop();
+        this.scene.start("title");
     }
+
     update() {
-    
+
     }
 }
 

@@ -7,16 +7,16 @@ class Evolution {
         this.abilityCooldown = 0;
         this.subEvolutions = [];
     }
-  
+
     default() {
-    return {
-        speed: undefined,
-        scale: undefined,
-        power: undefined,
-        resistance: undefined,
-        damage: undefined,
-        hitCooldown: undefined,
-    };   
+        return {
+            speed: undefined,
+            scale: undefined,
+            power: undefined,
+            resistance: undefined,
+            damage: undefined,
+            hitCooldown: undefined,
+        };
     }
 
     ability() {

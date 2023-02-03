@@ -1,4 +1,5 @@
 const Evolution = require("./Evolution");
+
 class Warrior extends Evolution {
     constructor() {
         super();
@@ -7,6 +8,7 @@ class Warrior extends Evolution {
         this.abilityCooldown = 90000;
         this.subEvolutions = [];
     }
+
     default() {
         return {
             maxHealth: 1.05,
@@ -20,6 +22,7 @@ class Warrior extends Evolution {
             healAmount: 1.5,
         };
     }
+
     ability() {
         return {
             healWait: 0,
@@ -33,4 +36,5 @@ class Warrior extends Evolution {
         };
     }
 }
+
 module.exports = Warrior;

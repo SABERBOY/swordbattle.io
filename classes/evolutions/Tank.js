@@ -1,5 +1,3 @@
-
-
 const Evolution = require("./Evolution");
 
 const Warrior = require("./Warrior");
@@ -13,6 +11,7 @@ class Tank extends Evolution {
         this.abilityCooldown = 60000;
         this.subEvolutions = [20000, new Warrior(), new Rook()];
     }
+
     default() {
         return {
             maxHealth: 1.6,
@@ -26,6 +25,7 @@ class Tank extends Evolution {
             healAmount: 1.25,
         };
     }
+
     ability() {
         return {
             healWait: 0,
@@ -38,4 +38,5 @@ class Tank extends Evolution {
         };
     }
 }
+
 module.exports = Tank;

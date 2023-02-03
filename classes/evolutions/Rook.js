@@ -1,6 +1,5 @@
-
-
 const Evolution = require("./Evolution");
+
 class Rook extends Evolution {
     constructor() {
         super();
@@ -9,6 +8,7 @@ class Rook extends Evolution {
         this.abilityCooldown = 50000;
         this.subEvolutions = [];
     }
+
     default() {
         return {
             maxHealth: 1.4,
@@ -23,6 +23,7 @@ class Rook extends Evolution {
             healWait: 2
         };
     }
+
     ability() {
         return {
             healWait: 0,
@@ -35,4 +36,5 @@ class Rook extends Evolution {
         };
     }
 }
+
 module.exports = Rook;

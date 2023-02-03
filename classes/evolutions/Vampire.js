@@ -1,5 +1,5 @@
-
 const Evolution = require("./Evolution");
+
 class Warrior extends Evolution {
     constructor() {
         super();
@@ -8,6 +8,7 @@ class Warrior extends Evolution {
         this.abilityCooldown = 40000;
         this.subEvolutions = [];
     }
+
     default() {
         return {
             maxHealth: 0.85,
@@ -22,6 +23,7 @@ class Warrior extends Evolution {
             leech: 1.1,
         };
     }
+
     ability() {
         return {
             leech: 1.2,
@@ -30,4 +32,5 @@ class Warrior extends Evolution {
         };
     }
 }
+
 module.exports = Warrior;
